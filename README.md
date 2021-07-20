@@ -59,6 +59,8 @@ You will be running your tests in one terminal and debugging in the other. As yo
 Edit the `ReadMe` file with your answers to the questions below.
 
 1. In your own words, define closure (1-2 sentences).
+    Closure is observed during the point at which a function calls for an object, function, array, or variable that is not declared within it's own logic but is declared within the body of its parent function. Essentially, closure occurs when the aforementioned function inherits the scope of its parent function.
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -80,9 +82,13 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
-b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
-c. What is the lexical scope of `newRoll`? 
+  Closure is used durring the log where '${name}' is called from inside of the function returned at the end of personalDice(); 'name' is not defined within the unnamed 'function()' but is an expected parameter of the function that creates it. console.log, and thus 'function()', must reach outside of their locality and into the parent, 'personalDice' to retrieve the value of 'name', and thus inherit its scope (to one degree at least).
 
+b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+  Calling 'dansRoll()' will always log a string that has the value 'Dan rolled a ...' where '...' is a random number generated from between one and six. The value of the 'newRoll' variable will be different 5 times out of six every time the unnamed 'function()' is returned from within 'personalDice()'. Thus, where the '${name}' substitution will always result in "Dan" whenever dansRoll is called, the value of '${newRoll}' will be different 5/6 times.
+
+c. What is the lexical scope of `newRoll`? 
+  Everything within itself and accessible to personalDice(), it's parent function, so long as it was declared prior to the construction of the 'newRoll' funtion.
 
 ### Task 3 - Stretch Goals
 
