@@ -164,8 +164,22 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(callback1, callback2, innings) {
+  let checkSumHome = 0;
+  let checkSumAway = 0;
+  const array = [];
+  for(let i = 0; i <= innings; i++){
+    const currentScore = callback1(callback2());
+    array.push("Inning 1: Away ${currentScore.away} - Home ${currentScore.Home}");
+    checkSumHome = checkSumHome + currentScore.Home;
+    checkSumAway = checkSumAway + currentScore.Away;
+  }
+  if(checkSumAway === checkSumHome){
+    array.push("This game will require extra innings: Away ${checkSumAway} - Home ${checkSumHome}");
+  }else{
+    array.push("Final Score: Away ${checkSumAway} - Home ${checkSumHome}");
+  }
+  return array;
 }
 
 
